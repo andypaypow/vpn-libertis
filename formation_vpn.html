@@ -1113,10 +1113,9 @@ systemctl restart vpn-proxy.service`,
             steps.forEach((step, index) => {
                 const stepItem = document.createElement('div');
                 stepItem.className = `step-item ${completedSteps.has(index) ? 'completed' : ''}`;
-                stepItem.id = `step-${index}`;
 
                 let content = `
-                    <div class="step-header" onclick="toggleStep(${index})">
+                    <div class="step-header" id="step-${index}" onclick="toggleStep(${index})">
                         <span class="step-number">${index + 1}</span>
                         <span class="step-title">${step.title}</span>
                         <span class="step-indicator">▼</span>
@@ -1200,7 +1199,8 @@ systemctl restart vpn-proxy.service`,
         }
 
         function toggleStep(index) {
-            const stepItem = document.getElementById(`step-${index}`);
+            const stepHeader = document.getElementById(`step-${index}`);
+            const stepItem = stepHeader.closest('.step-item');
             const isOpen = stepItem.classList.contains('open');
 
             // Ouvrir l'étape cliquée si elle n'était pas ouverte
@@ -1214,10 +1214,10 @@ systemctl restart vpn-proxy.service`,
                 stepItem.classList.add('open');
 
                 // Forcer le reflow avant le scroll
-                stepItem.offsetHeight;
+                stepHeader.offsetHeight;
 
-                // Scroll manuel pour garantir le positionnement au début
-                const offset = stepItem.getBoundingClientRect().top + window.pageYOffset - 20;
+                // Scroll manuel vers l'header de l'étape (l'ancre)
+                const offset = stepHeader.getBoundingClientRect().top + window.pageYOffset - 10;
                 window.scrollTo({
                     top: offset,
                     behavior: 'smooth'
