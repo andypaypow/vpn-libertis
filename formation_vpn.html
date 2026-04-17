@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation VPN Libertis - Étape par Étape</title>
+    <title>Formation VPN Libertis - Guide Complet</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -133,6 +133,56 @@
             border-radius: 5px;
         }
 
+        .action {
+            background: #fff3e0;
+            padding: 20px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .action h3 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+        }
+
+        .action ul {
+            margin-left: 20px;
+            color: #333;
+        }
+
+        .action li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .code-block {
+            background: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .copy-btn:hover {
+            background: #5a67d8;
+        }
+
         .term {
             color: #667eea;
             font-weight: bold;
@@ -202,14 +252,172 @@
         .vocabulary li:last-child {
             border-bottom: none;
         }
+
+        .schema-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .schema-title {
+            color: #667eea;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .schema {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .schema-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            text-align: center;
+            min-width: 250px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .schema-arrow {
+            font-size: 2em;
+            color: #667eea;
+        }
+
+        .schema-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .schema-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #667eea;
+        }
+
+        .schema-item strong {
+            display: block;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .checklist {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .checklist h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #c8e6c9;
+        }
+
+        .checklist-item.checked {
+            background: #a5d6a7;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .checklist-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #2e7d32;
+            border-radius: 4px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checklist-item.checked .checklist-checkbox {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .checklist-checkbox::after {
+            content: '✓';
+            display: none;
+        }
+
+        .checklist-item.checked .checklist-checkbox::after {
+            display: block;
+        }
+
+        .step-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .step-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .step-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .step-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .step-btn.completed {
+            background: #4caf50;
+            border-color: #4caf50;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .schema-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎓 Formation VPN Libertis</h1>
-            <p>Apprendre à créer un VPN étape par étape<br>
-            <small>Comprendre sans être ingénieur réseau !</small></p>
+            <h1>🎓 Formation VPN Libertis - Guide Complet</h1>
+            <p>Apprendre à créer un VPN fonctionnel étape par étape<br>
+            <small>Instructions pratiques : installer, configurer, coder, vérifier</small></p>
         </div>
 
         <div class="progress-container">
@@ -218,10 +426,44 @@
                 <div class="progress-fill" id="progress">0%</div>
             </div>
             <p style="margin-top: 10px; color: #666;">
-                Étape <span id="currentStep">1</span> sur <span id="totalSteps">7</span>
+                Étape <span id="currentStep">1</span> sur <span id="totalSteps">10</span>
             </p>
         </div>
 
+        <div class="schema-container" id="schema-section">
+            <h2 class="schema-title">🗺️ Schéma Global du Projet VPN</h2>
+            <div class="schema">
+                <div class="schema-box">📱 Ton Smartphone</div>
+                <div class="schema-arrow">⬇️</div>
+                <div class="schema-grid">
+                    <div class="schema-item">
+                        <strong>🌐 Internet Libre</strong>
+                        Sites web, vidéos, téléchargements
+                    </div>
+                    <div class="schema-item">
+                        <strong>🔒 VPN Libertis</strong>
+                        Connexion sécurisée via le VPS
+                    </div>
+                </div>
+                <div class="schema-arrow">⬇️</div>
+                <div class="schema-box">🖥️ VPS Hostinger</div>
+                <div class="schema-arrow">⬇️</div>
+                <div class="schema-grid">
+                    <div class="schema-item">
+                        <strong>🚪 Port 443</strong>
+                        Entrée publique (SSLH)
+                    </div>
+                    <div class="schema-item">
+                        <strong>🔑 Port 2222</strong>
+                        SSH interne (VPS)
+                    </div>
+                </div>
+                <div class="schema-arrow">⬇️</div>
+                <div class="schema-box">🌐 Le Monde</div>
+            </div>
+        </div>
+
+        <div class="step-menu" id="step-menu"></div>
         <div id="steps-container"></div>
 
         <div class="buttons">
@@ -233,108 +475,438 @@
     <script>
         const steps = [
             {
-                title: "Qu'est-ce qu'un VPN ?",
-                technical: "Un VPN (Virtual Private Network) est un réseau privé virtuel qui crée un tunnel chiffré entre votre appareil et un serveur distant. Il utilise des protocoles comme SSH, OpenVPN ou WireGuard pour sécuriser le trafic.",
+                title: "Comprendre le VPN - Pourquoi et Comment ?",
+                technical: "Un VPN (Virtual Private Network) crée un tunnel chiffré entre votre appareil et un serveur distant. Il utilise SSH pour sécuriser le trafic et le port 443 pour passer à travers les restrictions d'opérateurs.",
                 simple: "Imagine que tu envoies une lettre dans une enveloppe transparente - tout le monde peut voir ce que tu écris. Un VPN, c'est comme mettre ta lettre dans une enveloppe opaque et blindée que seul ton destinataire peut ouvrir. Personne entre toi et lui ne peut voir le contenu !",
                 vocabulary: [
-                    "VPN (Réseau Privé Virtuel) = Tunnel sécurisé pour internet",
-                    "Chiffrer = Transformer en code secret pour protéger",
+                    "VPN = Tunnel sécurisé (comme un passage secret)",
+                    "Chiffrer = Transformer en code secret (cadenas)",
                     "Tunnel = Passage protégé entre deux points",
-                    "Protocole = Ensemble de règles pour communiquer"
+                    "SSH = Communication sécurisée (ligne cryptée)"
+                ],
+                checklist: ["Comprendre ce qu'est un VPN", "Comprendre pourquoi utiliser un VPN", "Comprendre le principe du tunnel"],
+                actions: [
+                    "Lire attentivement l'explication technique et l'analogie",
+                    "Mémoriser le vocabulaire avec les synonymes",
+                    "Passer à l'étape suivante quand vous comprenez le concept"
                 ]
             },
             {
-                title: "Pourquoi utiliser un VPN ?",
-                technical: "Un VPN offre plusieurs avantages : confidentialité des données, chiffrement du trafic, masquage de l'adresse IP, contournement de la géolocalisation et protection sur les réseaux publics (Wi-Fi cafés, hôtels, etc.).",
-                simple: "C'est comme si tu avais un manteau invisible quand tu sors. Les autres voient que tu sors, mais ils ne savent pas qui tu es, où tu vas, ni ce que tu as dans tes poches. C'est ta protection quand tu navigues sur internet !",
+                title: "L'Architecture Globale - Comment ça marche ensemble",
+                technical: "Notre architecture : Smartphone → Internet → VPS (72.62.181.239) → Port 443 (SSLH) → Port 2222 (SSH) → Utilisateur gosen → Proxy Python → Internet. Chaque composant joue un rôle précis dans la chaîne.",
+                simple: "Pense à une usine de production : Tu entres par l'entrée principale (port 443), le réceptionniste (SSLH) t'envoie au bon atelier (SSH), l'ouvrier (gosen) t'aide, et le chef d'équipe (proxy Python) coordonne tout pour que la production soit rapide !",
                 vocabulary: [
-                    "Adresse IP = Ton numéro d'identification sur internet",
-                    "Confidentialité = Garde secret ce que tu fais",
-                    "Chiffrement = Mettre un cadenas sur tes données",
-                    "Contourner = Passer outre une restriction"
-                ]
-            },
-            {
-                title: "Le serveur VPS - Notre maison",
-                technical: "Un VPS (Virtual Private Server) est une machine virtuelle hébergée chez un fournisseur. Notre VPS est chez Hostinger avec l'IP 72.62.181.239. Il fonctionne 24h/24 et sert de point d'ancrage pour notre VPN.",
-                simple: "Pense au VPS comme une maison que tu loues dans une autre ville. Cette maison est toujours ouverte, les lumières sont allumées, et tu peux t'y connecter de n'importe où. C'est là que 'habite' ton VPN !",
-                vocabulary: [
+                    "Architecture = Organisation des éléments (comme une usine)",
                     "VPS = Serveur virtuel (ordinateur dans le cloud)",
-                    "Hébergeur = Propriétaire qui loue le serveur",
-                    "IP = Adresse de la maison (comme 72.62.181.239)",
-                    "24h/24 = Fonctionne tout le temps, jamais d'arrêt"
+                    "Port = Porte d'entrée numérique",
+                    "Proxy = Intermédiaire (comme un traducteur)"
+                ],
+                checklist: ["Identifier les composants de l'architecture", "Comprendre le flux des données", "Mémoriser les ports utilisés"],
+                actions: [
+                    "Regarder le schéma global en haut de la page",
+                    "Identifier où se trouve ton smartphone, le VPS et Internet",
+                    "Comprendre le rôle de chaque composant"
                 ]
             },
             {
-                title: "SSH - La connexion sécurisée",
-                technical: "SSH (Secure Shell) est un protocole de communication cryptographique pour l'administration à distance. Il utilise le port 22 par défaut, mais nous utiliserons le port 443 (HTTPS) pour passer à travers les firewalls.",
-                simple: "C'est comme appeler quelqu'un avec une ligne téléphonique ultra-sécurisée. Personne ne peut écouter la conversation. Même si on essaie, ils n'entendent que du charabia !",
+                title: "Étape 1 : Installer le VPS - Notre Maison",
+                technical: "Procurez-vous un VPS chez Hostinger ou un autre fournisseur. Ubuntu 22.04 est recommandé. Notez l'IP (ex: 72.62.181.239), le mot de passe root et configurez le SSH sur le port 2222 pour plus de sécurité.",
+                simple: "C'est comme acheter une maison. Tu choisis l'emplacement (l'hébergeur), la taille (RAM, stockage), et tu reçois les clés (mot de passe). Une fois que c'est à toi, tu peux y faire ce que tu veux, quand tu veux !",
+                vocabulary: [
+                    "VPS = Serveur virtuel (maison dans le cloud)",
+                    "Hébergeur = Propriétaire qui loue le serveur",
+                    "IP = Adresse de la maison",
+                    "RAM = Mémoire vive (comme la mémoire à court terme)"
+                ],
+                checklist: ["Avoir un compte Hostinger", "Commander un VPS", "Recevoir les informations de connexion"],
+                actions: [
+                    "Aller sur hostinger.com",
+                    "Choisir un plan VPS (minimum 2GB RAM)",
+                    "Installer Ubuntu 22.04",
+                    "Noter l'IP, le mot de passe root et le port SSH"
+                ]
+            },
+            {
+                title: "Étape 2 : Installer SSH - La Communication Sécurisée",
+                technical: "Connectez-vous au VPS et installez/configurez SSH. Modifiez le port par défaut de 22 à 2222 pour plus de sécurité. Créez un utilisateur 'gosen' avec mot de passe.",
+                code: `# Se connecter au VPS
+ssh root@VOTRE_IP
+
+# Installer SSH (si pas déjà installé)
+apt update && apt install openssh-server -y
+
+# Modifier le port SSH à 2222
+sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
+sed -i 's/Port 22/Port 2222/' /etc/ssh/sshd_config
+
+# Créer utilisateur gosen
+adduser gosen
+# (entrer mot de passe: gosen)
+
+# Redémarrer SSH
+systemctl restart sshd`,
+                simple: "C'est comme installer une ligne téléphonique sécurisée chez toi. Tu choisis le numéro (port 2222), tu crées une ligne pour ton ami (utilisateur gosen), et tu mets un cadenas pour que personne ne puisse écouter !",
                 vocabulary: [
                     "SSH = Communication sécurisée (ligne cryptée)",
-                    "Port = Porte d'entrée pour les communications",
-                    "Firewall = Mur de protection qui bloque les intrus",
-                    "HTTPS = Version sécurisée de HTTP (le 'S' pour Security)"
-                ]
+                    "Port = Numéro de téléphone (porte d'entrée)",
+                    "Utilisateur = Personne autorisée à utiliser la ligne",
+                    "Redémarrer = Éteindre et rallumer le service"
+                ],
+                checklist: ["SSH installé", "Port modifié à 2222", "Utilisateur gosen créé"],
+                actions: [
+                    "Copier les commandes ci-dessus",
+                    "Exécuter sur votre VPS",
+                    "Vérifier que SSH fonctionne sur le port 2222"
+                ],
+                verify: `# Vérifier que SSH écoute sur le port 2222
+netstat -tlnp | grep :2222
+
+# Résultat attendu : tcp  0  0.0.0.0:2222  0.0.0.0:*  LISTEN  sshd`
             },
             {
-                title: "Le port 443 - La porte déguisée",
-                technical: "Le port 443 est utilisé pour le trafic HTTPS (web sécurisé). La plupart des réseaux et opérateurs l'acceptent sans restriction. En utilisant le port 443 pour notre VPN, il ressemble à du trafic web normal.",
-                simple: "Imagine que tu veux entrer dans un club très sélectif. Si tu arrives par l'entrée VIP, ils vont te bloquer. Mais si tu arrives par l'entrée normale (comme tout le monde qui va sur le web), ils te laissent passer ! Le port 443, c'est cette entrée normale.",
+                title: "Étape 3 : Installer SSLH - Le Répartiteur",
+                technical: "SSLH (SSL/SSH Multiplexer) écoute sur le port 443 et redirige le trafic vers le bon service. Configurez-le pour écouter sur le port 443 et rediriger vers SSH sur le port 2222.",
+                code: `# Installer SSLH
+apt update && apt install sslh -y
+
+# Configuration SSLH
+cat > /etc/default/sslh << 'EOF'
+RUN=yes
+DAEMON=/usr/sbin/sslh
+DAEMON_OPTS="--listen 0.0.0.0:443 --ssh localhost:2222 --http localhost:2222 --pidfile /var/run/sslh/sslh.pid --verbose"
+EOF
+
+# Configuration avancée SSLH
+cat > /etc/sslh.cfg << 'EOF'
+timeout: 5;
+listen: 0.0.0.0:443;
+listen: [::]:443;
+protocol:
+    {
+        name: ssh;
+        host: localhost;
+        port: 2222;
+        log_level: 0;
+    }
+    {
+        name: http;
+        host: localhost;
+        port: 2222;
+        log_level: 0;
+    }
+EOF
+
+# Démarrer SSLH
+systemctl start sslh
+systemctl enable sslh`,
+                simple: "C'est comme installer un réceptionniste à l'entrée de ton immeuble. Quand quelqu'un sonne à la porte 443, le réceptionniste regarde qui c'est et l'envoie au bon appartement : si c'est du SSH, il va à l'appartement 2222 !",
                 vocabulary: [
-                    "Port = Une porte numérique pour les communications",
-                    "HTTPS = Protocole web sécurisé (Google, Facebook, etc.)",
-                    "Trafic normal = Ce que tout le monde utilise",
-                    "Restriction = Interdiction ou limitation"
-                ]
-            },
-            {
-                title: "Le payload - Le déguisement",
-                technical: "Le payload est un en-tête HTTP injecté dans la requête pour que le trafic ressemble à une autre application. Pour Libertis, nous utilisons un payload qui imite une requête vers leurs serveurs officiels (41.159.3.107).",
-                simple: "C'est comme si tu voulais entrer dans une fête privée. Tu mets un costume officiel (le payload) qui ressemble à celui des VIP. Le gardien (Libertis) te voit passer et pense 'Ah ! Un VIP, laissez-le entrer !' alors qu'en fait c'est toi avec ton VPN !",
-                vocabulary: [
-                    "Payload = En-tête (fausse information pour se faire passer pour autre chose)",
-                    "En-tête HTTP = Informations cachées dans une demande web",
-                    "Imiter = Copier le comportement de quelqu'un d'autre",
-                    "Zero-rating = Télécharger gratuitement sans payer"
-                ]
-            },
-            {
-                title: "SSLH - Le multiplexeur (répartiteur)",
-                technical: "SSLH (SSL/SSH Multiplexer) écoute sur le port 443 et redirige le trafic vers le bon service interne. Si c'est du HTTPS, ça va vers le serveur web. Si c'est du SSH, ça va vers le serveur SSH. Tout passe par la même porte publique (443) !",
-                simple: "Imagine un réceptionniste à l'entrée d'un immeuble. Quand quelqu'un arrive, le réceptionniste regarde qui c'est et l'envoie au bon bureau : si c'est un visiteur du web, il va au bureau A. Si c'est un visiteur du VPN, il va au bureau B. Mais tout le monde entre par la même porte (le port 443) !",
-                vocabulary: [
-                    "SSLH = Répartiteur de trafic (comme un réceptionniste)",
+                    "SSLH = Répartiteur de trafic (réceptionniste)",
                     "Rediriger = Envoyer vers le bon endroit",
                     "Multiplexeur = Gestionnaire de plusieurs flux",
-                    "Service = Application ou fonction sur le serveur"
-                ]
+                    "Écouter = Attendre les connexions (comme guetter la porte)"
+                ],
+                checklist: ["SSLH installé", "SSLH configuré", "SSLH démarré"],
+                actions: [
+                    "Copier les commandes ci-dessus",
+                    "Exécuter sur votre VPS",
+                    "Vérifier que SSLH fonctionne"
+                ],
+                verify: `# Vérifier que SSLH écoute sur le port 443
+netstat -tlnp | grep :443
+
+# Résultat attendu : tcp  0  0.0.0.0:443  0.0.0.0:*  LISTEN  sslh
+
+# Vérifier les ports actifs
+netstat -tlnp | grep -E ':443|:2222'`
             },
             {
-                title: "Notre architecture complète",
-                technical: "Notre architecture utilise : sslh sur port 443 → SSH sur port 2222 → utilisateur gosen. Le proxy Python (proxy_optimized.py) gère les connexions avec des buffers de 64KB et TCP_NODELAY pour optimiser les performances.",
-                simple: "Voici comment ça marche en simple : Tu te connectes par la porte 443. Le réceptionniste (sslh) voit que c'est toi et t'envoie à la bonne chambre (SSH). Une fois dans la chambre, tu peux faire ce que tu veux sur internet, et personne ne peut voir ce que tu fais !",
+                title: "Étape 4 : Activer IP Forwarding - Le Pont",
+                technical: "Activez l'IP forwarding pour permettre au VPS de faire passer le trafic entre les interfaces. Cela est nécessaire pour que le VPN fonctionne correctement.",
+                code: `# Activer IP forwarding temporairement
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# Activer IP forwarding de manière permanente
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+sysctl -p
+
+# Vérifier
+sysctl net.ipv4.ip_forward`,
+                simple: "C'est comme ouvrir un pont entre deux îles. Sans le pont, personne ne peut passer d'une île à l'autre. Avec le pont (IP forwarding), le trafic peut circuler librement entre ton téléphone et le reste du monde !",
                 vocabulary: [
-                    "Architecture = L'organisation de tous les éléments",
-                    "Buffer = Espace de stockage temporaire (comme une poche)",
+                    "IP forwarding = Pont réseau (autoriser le passage)",
+                    "Interface = Carte réseau (comme une porte)",
+                    "Trafic = Données qui circulent",
+                    "Sysctl = Configuration du système"
+                ],
+                checklist: ["IP forwarding activé", "Configuration permanente"],
+                actions: [
+                    "Copier les commandes ci-dessus",
+                    "Exécuter sur votre VPS",
+                    "Vérifier que le forwarding est activé"
+                ],
+                verify: `# Résultat attendu
+net.ipv4.ip_forward = 1`
+            },
+            {
+                title: "Étape 5 : Créer le Proxy Python - Le Chef d'Équipe",
+                technical: "Créez le fichier proxy_optimized.py qui gère les connexions VPN. Ce proxy utilise des buffers de 64KB, TCP_NODELAY pour réduire la latence, et gère les erreurs proprement.",
+                code: `# Créer le fichier proxy
+cat > /root/proxy_optimized.py << 'EOF'
+import socket
+import threading
+import select
+import sys
+import time
+
+class ProxyServer:
+    def __init__(self, listen_port=8888, target_host='127.0.0.1', target_port=443, max_threads=200):
+        self.listen_port = listen_port
+        self.target_host = target_host
+        self.target_port = target_port
+        self.max_threads = max_threads
+        self.running = True
+        self.active_threads = 0
+        self.lock = threading.Lock()
+
+    def handle_client(self, client_socket, client_address):
+        with self.lock:
+            self.active_threads += 1
+
+        try:
+            target_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            target_socket.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            target_socket.connect((self.target_host, self.target_port))
+            target_socket.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+
+            BUFFER_SIZE = 65536
+            sockets = [client_socket, target_socket]
+
+            while self.running:
+                readable, _, exceptional = select.select(sockets, [], sockets, 1)
+
+                if exceptional:
+                    break
+
+                for sock in readable:
+                    try:
+                        data = sock.recv(BUFFER_SIZE)
+                        if not data:
+                            return
+                        (target_socket if sock == client_socket else client_socket).sendall(data)
+                    except (ConnectionResetError, BrokenPipeError, OSError):
+                        return
+
+        finally:
+            client_socket.close()
+            target_socket.close()
+            with self.lock:
+                self.active_threads -= 1
+
+    def start(self):
+        server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server_socket.bind(('0.0.0.0', self.listen_port))
+        server_socket.listen(100)
+
+        print(f"Proxy server listening on port {self.listen_port}")
+
+        while self.running:
+            try:
+                client_socket, client_address = server_socket.accept()
+
+                with self.lock:
+                    if self.active_threads >= self.max_threads:
+                        client_socket.close()
+                        continue
+
+                thread = threading.Thread(
+                    target=self.handle_client,
+                    args=(client_socket, client_address),
+                    daemon=True
+                )
+                thread.start()
+
+            except Exception as e:
+                if self.running:
+                    print(f"Error: {e}")
+
+    def stop(self):
+        self.running = False
+
+if __name__ == "__main__":
+    proxy = ProxyServer(listen_port=8888, target_host='127.0.0.1', target_port=443)
+    try:
+        proxy.start()
+    except KeyboardInterrupt:
+        proxy.stop()
+EOF
+
+# Installer Python si nécessaire
+apt install python3 -y`,
+                simple: "C'est comme engager un chef d'équipe intelligent. Il reçoit les demandes, les organise, et les distribue rapidement. Il utilise une grande poche (buffer 64KB) pour transporter plus de choses à la fois !",
+                vocabulary: [
+                    "Proxy = Intermédiaire (chef d'équipe)",
+                    "Buffer = Espace de stockage temporaire (grande poche)",
                     "TCP_NODELAY = Raccourci pour aller plus vite",
-                    "Optimiser = Rendre plus performant"
-                ]
+                    "Thread = Travailleur indépendant"
+                ],
+                checklist: ["Fichier proxy_optimized.py créé", "Python installé"],
+                actions: [
+                    "Copier le code Python ci-dessus",
+                    "Exécuter sur votre VPS",
+                    "Vérifier que le fichier est créé"
+                ],
+                verify: `# Vérifier que le fichier existe
+ls -la /root/proxy_optimized.py
+
+# Lancer le proxy en test
+python3 /root/proxy_optimized.py &
+# (Ctrl+C pour arrêter)`
+            },
+            {
+                title: "Étape 6 : Démarrer le Proxy Automatiquement",
+                technical: "Créez un service systemd pour que le proxy démarre automatiquement au démarrage du VPS. Cela assure que le VPN est toujours disponible.",
+                code: `# Créer le service systemd
+cat > /etc/systemd/system/vpn-proxy.service << 'EOF'
+[Unit]
+Description=VPN Proxy Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/proxy_optimized.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Activer et démarrer le service
+systemctl daemon-reload
+systemctl enable vpn-proxy.service
+systemctl start vpn-proxy.service
+
+# Vérifier le statut
+systemctl status vpn-proxy.service`,
+                simple: "C'est comme mettre un réveil automatique. Chaque fois que le VPS s'allume (démarrage), le proxy se met en route automatiquement. Tu n'as plus besoin de le faire manuellement !",
+                vocabulary: [
+                    "Systemd = Gestionnaire de services (contrôleur de l'usine)",
+                    "Service = Programme qui tourne en arrière-plan",
+                    "Démoniser = Mettre en arrière-plan",
+                    "Démarrage automatique = Se lancer seul au redémarrage"
+                ],
+                checklist: ["Service systemd créé", "Service activé", "Service démarré"],
+                actions: [
+                    "Copier les commandes ci-dessus",
+                    "Exécuter sur votre VPS",
+                    "Vérifier que le service tourne"
+                ],
+                verify: `# Résultat attendu : Active (running)
+systemctl status vpn-proxy.service
+
+# Voir les logs du proxy
+journalctl -u vpn-proxy.service -f`
+            },
+            {
+                title: "Étape 7 : Configurer le Client VPN - Ton Application",
+                technical: "Configurez votre application VPN (HTTP Injector, NPV Tunnel, ou autre) avec les paramètres suivants : Host: 72.62.181.239, Port: 443, Username: gosen, Password: gosen. Ajoutez le payload Libertis si nécessaire.",
+                code: `# Configuration de base pour le client
+# Host: 72.62.181.239
+# Port: 443
+# Username: gosen
+# Password: gosen
+# Protocol: SSH Direct
+
+# Payload pour Libertis (si nécessaire)
+# GET http://41.159.3.107 HTTP/1.0[crlf]Host: 41.159.3.105[crlf]Connection: keep-alive[crlf]User-Agent: Dalvik/2.1.0[crlf]X-Online-Host: 41.159.3.107[crlf][crlf]`,
+                simple: "C'est comme configurer ta télécommande pour allumer la télé. Tu choisis le bon canal (IP), la bonne fréquence (port), et tu entres le code secret (mot de passe). Une fois configuré, ça marche toujours !",
+                vocabulary: [
+                    "Client VPN = Application sur ton téléphone",
+                    "Payload = En-tête (fausse information)",
+                    "Host = Adresse du serveur",
+                    "Port = Porte d'entrée"
+                ],
+                checklist: ["Application VPN installée", "Configuration entrée", "Connexion testée"],
+                actions: [
+                    "Installer HTTP Injector ou NPV Tunnel",
+                    "Entrer la configuration ci-dessus",
+                    "Tester la connexion"
+                ],
+                verify: `# Sur ton téléphone
+# 1. Ouvrir l'application VPN
+# 2. Cliquer sur "Connecter"
+# 3. Vérifier que la connexion est établie
+# 4. Ouvrir un navigateur et tester internet`
+            },
+            {
+                title: "Étape 8 : Vérifier et Maintenir - Contrôle Qualité",
+                technical: "Vérifiez que tous les services tournent correctement : SSLH sur 443, SSH sur 2222, et le Proxy Python sur 8888. Surveillez les logs pour détecter les erreurs.",
+                code: `# Vérifier tous les ports actifs
+netstat -tlnp | grep -E ':443|:2222|:8888'
+
+# Vérifier les services
+systemctl status sshd
+systemctl status sslh
+systemctl status vpn-proxy.service
+
+# Voir les logs récents
+journalctl -n 50 --no-pager
+
+# Redémarrer un service si nécessaire
+systemctl restart vpn-proxy.service`,
+                simple: "C'est comme faire une inspection de ton usine. Tu vérifies que toutes les machines tournent, que les portes sont ouvertes, et que personne ne bloque le passage. Si quelque chose ne marche pas, tu le répares !",
+                vocabulary: [
+                    "Logs = Journaux (rapports d'activité)",
+                    "Service = Programme qui tourne",
+                    "Netstat = Outil pour voir les ports",
+                    "Redémarrer = Éteindre et rallumer"
+                ],
+                checklist: ["Ports actifs vérifiés", "Services opérationnels", "Logs vérifiés"],
+                actions: [
+                    "Exécuter les commandes de vérification",
+                    "Regarder les logs pour détecter les erreurs",
+                    "Corriger les problèmes trouvés"
+                ],
+                verify: `# Résultat attendu
+# Port 443 : sslh (écoute)
+# Port 2222 : sshd (écoute)
+# Port 8888 : python (écoute)
+
+# Tous les services doivent être "Active (running)"`
             }
         ];
 
         let currentStep = 0;
+        let completedSteps = new Set();
 
         function renderSteps() {
             const container = document.getElementById('steps-container');
+            const menu = document.getElementById('step-menu');
             container.innerHTML = '';
+            menu.innerHTML = '';
 
             steps.forEach((step, index) => {
-                const stepDiv = document.createElement('div');
-                stepDiv.className = `step ${index === currentStep ? 'active' : ''} ${index < currentStep ? 'completed' : ''}`;
+                // Menu buttons
+                const btn = document.createElement('button');
+                btn.className = `step-btn ${index === currentStep ? 'active' : ''} ${completedSteps.has(index) ? 'completed' : ''}`;
+                btn.textContent = `Étape ${index + 1}`;
+                btn.onclick = () => goToStep(index);
+                menu.appendChild(btn);
 
-                stepDiv.innerHTML = `
+                // Step content
+                const stepDiv = document.createElement('div');
+                stepDiv.className = `step ${index === currentStep ? 'active' : ''} ${completedSteps.has(index) ? 'completed' : ''}`;
+
+                let content = `
                     <h2><span class="step-number">${index + 1}</span>${step.title}</h2>
-                    ${index === currentStep ? `
+                `;
+
+                if (index === currentStep) {
+                    content += `
                         <div class="step-content">
                             <div class="technical">
                                 <strong>🔧 Version Technique :</strong><br>
@@ -344,6 +916,54 @@
                                 <strong>🌍 Version Terre à Terre :</strong><br>
                                 ${step.simple}
                             </div>
+                    `;
+
+                    if (step.actions) {
+                        content += `
+                            <div class="action">
+                                <h3>📋 Ce que tu dois faire :</h3>
+                                <ul>
+                                    ${step.actions.map(action => `<li>${action}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+
+                    if (step.code) {
+                        content += `
+                            <div class="code-block">
+                                <pre>${step.code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+                                <button class="copy-btn" onclick="copyCode(${index})">📋 Copier le code</button>
+                            </div>
+                        `;
+                    }
+
+                    if (step.verify) {
+                        content += `
+                            <div class="action" style="border-left-color: #4caf50; background: #e8f5e9;">
+                                <h3>✅ Comment vérifier :</h3>
+                                <div class="code-block">
+                                    <pre>${step.verify.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    if (step.checklist) {
+                        content += `
+                            <div class="checklist">
+                                <h3>✅ Checklist de validation</h3>
+                                ${step.checklist.map((item, i) => `
+                                    <div class="checklist-item ${completedSteps.has(index) ? 'checked' : ''}" onclick="toggleChecklist(${index})">
+                                        <div class="checklist-checkbox"></div>
+                                        ${item}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+
+                    content += `
                             <div class="vocabulary">
                                 <h3>📚 Vocabulaire à retenir</h3>
                                 <ul>
@@ -353,11 +973,10 @@
                                 </ul>
                             </div>
                         </div>
-                    ` : `
-                        <p style="color: #999; font-style: italic;">${step.title}</p>
-                    `}
-                `;
+                    `;
+                }
 
+                stepDiv.innerHTML = content;
                 container.appendChild(stepDiv);
             });
 
@@ -373,13 +992,18 @@
 
             document.getElementById('prevBtn').disabled = currentStep === 0;
             document.getElementById('nextBtn').textContent = currentStep === steps.length - 1 ? 'Terminé !' : 'Suivant →';
+
+            // Scroll to active step
+            if (document.querySelector('.step.active')) {
+                document.querySelector('.step.active').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function nextStep() {
             if (currentStep < steps.length - 1) {
+                completedSteps.add(currentStep);
                 currentStep++;
                 renderSteps();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
@@ -387,9 +1011,37 @@
             if (currentStep > 0) {
                 currentStep--;
                 renderSteps();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
+
+        function goToStep(index) {
+            currentStep = index;
+            renderSteps();
+        }
+
+        function copyCode(stepIndex) {
+            const code = steps[stepIndex].code;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copié ! Collez-le dans votre terminal.');
+            }).catch(err => {
+                alert('Erreur lors de la copie : ' + err);
+            });
+        }
+
+        function toggleChecklist(stepIndex) {
+            if (completedSteps.has(stepIndex)) {
+                completedSteps.delete(stepIndex);
+            } else {
+                completedSteps.add(stepIndex);
+            }
+            renderSteps();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextStep();
+            if (e.key === 'ArrowLeft') previousStep();
+        });
 
         // Initialisation
         renderSteps();
