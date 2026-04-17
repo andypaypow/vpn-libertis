@@ -1216,10 +1216,12 @@ systemctl restart vpn-proxy.service`,
                 // Forcer le reflow avant le scroll
                 stepItem.offsetHeight;
 
-                // Scroll avec un délai pour laisser l'animation CSS commencer
-                setTimeout(() => {
-                    stepItem.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-                }, 50);
+                // Scroll manuel pour garantir le positionnement au début
+                const offset = stepItem.getBoundingClientRect().top + window.pageYOffset - 20;
+                window.scrollTo({
+                    top: offset,
+                    behavior: 'smooth'
+                });
             } else {
                 // Si c'est déjà ouvert, on la ferme
                 stepItem.classList.remove('open');
