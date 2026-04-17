@@ -1203,20 +1203,22 @@ systemctl restart vpn-proxy.service`,
             const stepItem = document.getElementById(`step-${index}`);
             const isOpen = stepItem.classList.contains('open');
 
-            // Fermer toutes les étapes
-            document.querySelectorAll('.step-item').forEach(item => {
-                item.classList.remove('open');
-            });
-
             // Ouvrir l'étape cliquée si elle n'était pas ouverte
             if (!isOpen) {
-                stepItem.classList.add('open');
-            }
+                // Fermer d'abord toutes les étapes
+                document.querySelectorAll('.step-item').forEach(item => {
+                    item.classList.remove('open');
+                });
 
-            // Scroll vers l'étape
-            setTimeout(() => {
+                // Ouvrir l'étape cliquée
+                stepItem.classList.add('open');
+
+                // Scroll immédiatement vers le début de l'étape
                 stepItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            } else {
+                // Si c'est déjà ouvert, on la ferme
+                stepItem.classList.remove('open');
+            }
         }
 
         function copyCode(stepIndex) {
