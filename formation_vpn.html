@@ -1213,8 +1213,13 @@ systemctl restart vpn-proxy.service`,
                 // Ouvrir l'étape cliquée
                 stepItem.classList.add('open');
 
-                // Scroll immédiatement vers le début de l'étape
-                stepItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Forcer le reflow avant le scroll
+                stepItem.offsetHeight;
+
+                // Scroll avec un délai pour laisser l'animation CSS commencer
+                setTimeout(() => {
+                    stepItem.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                }, 50);
             } else {
                 // Si c'est déjà ouvert, on la ferme
                 stepItem.classList.remove('open');
