@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation VPN Libertis - Étape par Étape</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .progress-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .step {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            border-left: 5px solid #667eea;
+            transform: translateX(10px);
+        }
+
+        .step.completed {
+            border-left: 5px solid #4caf50;
+            opacity: 0.8;
+        }
+
+        .step h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .step-content {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .technical {
+            background: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .simple {
+            background: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .term {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-prev {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-prev:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-next {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-next:hover {
+            transform: scale(1.05);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .vocabulary {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .vocabulary h3 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+        }
+
+        .vocabulary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vocabulary li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ffe0b2;
+        }
+
+        .vocabulary li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Formation VPN Libertis</h1>
+            <p>Apprendre à créer un VPN étape par étape<br>
+            <small>Comprendre sans être ingénieur réseau !</small></p>
+        </div>
+
+        <div class="progress-container">
+            <h3>Progression de votre formation</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">0%</div>
+            </div>
+            <p style="margin-top: 10px; color: #666;">
+                Étape <span id="currentStep">1</span> sur <span id="totalSteps">7</span>
+            </p>
+        </div>
+
+        <div id="steps-container"></div>
+
+        <div class="buttons">
+            <button class="btn btn-prev" onclick="previousStep()" id="prevBtn">← Précédent</button>
+            <button class="btn btn-next" onclick="nextStep()" id="nextBtn">Suivant →</button>
+        </div>
+    </div>
+
+    <script>
+        const steps = [
+            {
+                title: "Qu'est-ce qu'un VPN ?",
+                technical: "Un VPN (Virtual Private Network) est un réseau privé virtuel qui crée un tunnel chiffré entre votre appareil et un serveur distant. Il utilise des protocoles comme SSH, OpenVPN ou WireGuard pour sécuriser le trafic.",
+                simple: "Imagine que tu envoies une lettre dans une enveloppe transparente - tout le monde peut voir ce que tu écris. Un VPN, c'est comme mettre ta lettre dans une enveloppe opaque et blindée que seul ton destinataire peut ouvrir. Personne entre toi et lui ne peut voir le contenu !",
+                vocabulary: [
+                    "VPN (Réseau Privé Virtuel) = Tunnel sécurisé pour internet",
+                    "Chiffrer = Transformer en code secret pour protéger",
+                    "Tunnel = Passage protégé entre deux points",
+                    "Protocole = Ensemble de règles pour communiquer"
+                ]
+            },
+            {
+                title: "Pourquoi utiliser un VPN ?",
+                technical: "Un VPN offre plusieurs avantages : confidentialité des données, chiffrement du trafic, masquage de l'adresse IP, contournement de la géolocalisation et protection sur les réseaux publics (Wi-Fi cafés, hôtels, etc.).",
+                simple: "C'est comme si tu avais un manteau invisible quand tu sors. Les autres voient que tu sors, mais ils ne savent pas qui tu es, où tu vas, ni ce que tu as dans tes poches. C'est ta protection quand tu navigues sur internet !",
+                vocabulary: [
+                    "Adresse IP = Ton numéro d'identification sur internet",
+                    "Confidentialité = Garde secret ce que tu fais",
+                    "Chiffrement = Mettre un cadenas sur tes données",
+                    "Contourner = Passer outre une restriction"
+                ]
+            },
+            {
+                title: "Le serveur VPS - Notre maison",
+                technical: "Un VPS (Virtual Private Server) est une machine virtuelle hébergée chez un fournisseur. Notre VPS est chez Hostinger avec l'IP 72.62.181.239. Il fonctionne 24h/24 et sert de point d'ancrage pour notre VPN.",
+                simple: "Pense au VPS comme une maison que tu loues dans une autre ville. Cette maison est toujours ouverte, les lumières sont allumées, et tu peux t'y connecter de n'importe où. C'est là que 'habite' ton VPN !",
+                vocabulary: [
+                    "VPS = Serveur virtuel (ordinateur dans le cloud)",
+                    "Hébergeur = Propriétaire qui loue le serveur",
+                    "IP = Adresse de la maison (comme 72.62.181.239)",
+                    "24h/24 = Fonctionne tout le temps, jamais d'arrêt"
+                ]
+            },
+            {
+                title: "SSH - La connexion sécurisée",
+                technical: "SSH (Secure Shell) est un protocole de communication cryptographique pour l'administration à distance. Il utilise le port 22 par défaut, mais nous utiliserons le port 443 (HTTPS) pour passer à travers les firewalls.",
+                simple: "C'est comme appeler quelqu'un avec une ligne téléphonique ultra-sécurisée. Personne ne peut écouter la conversation. Même si on essaie, ils n'entendent que du charabia !",
+                vocabulary: [
+                    "SSH = Communication sécurisée (ligne cryptée)",
+                    "Port = Porte d'entrée pour les communications",
+                    "Firewall = Mur de protection qui bloque les intrus",
+                    "HTTPS = Version sécurisée de HTTP (le 'S' pour Security)"
+                ]
+            },
+            {
+                title: "Le port 443 - La porte déguisée",
+                technical: "Le port 443 est utilisé pour le trafic HTTPS (web sécurisé). La plupart des réseaux et opérateurs l'acceptent sans restriction. En utilisant le port 443 pour notre VPN, il ressemble à du trafic web normal.",
+                simple: "Imagine que tu veux entrer dans un club très sélectif. Si tu arrives par l'entrée VIP, ils vont te bloquer. Mais si tu arrives par l'entrée normale (comme tout le monde qui va sur le web), ils te laissent passer ! Le port 443, c'est cette entrée normale.",
+                vocabulary: [
+                    "Port = Une porte numérique pour les communications",
+                    "HTTPS = Protocole web sécurisé (Google, Facebook, etc.)",
+                    "Trafic normal = Ce que tout le monde utilise",
+                    "Restriction = Interdiction ou limitation"
+                ]
+            },
+            {
+                title: "Le payload - Le déguisement",
+                technical: "Le payload est un en-tête HTTP injecté dans la requête pour que le trafic ressemble à une autre application. Pour Libertis, nous utilisons un payload qui imite une requête vers leurs serveurs officiels (41.159.3.107).",
+                simple: "C'est comme si tu voulais entrer dans une fête privée. Tu mets un costume officiel (le payload) qui ressemble à celui des VIP. Le gardien (Libertis) te voit passer et pense 'Ah ! Un VIP, laissez-le entrer !' alors qu'en fait c'est toi avec ton VPN !",
+                vocabulary: [
+                    "Payload = En-tête (fausse information pour se faire passer pour autre chose)",
+                    "En-tête HTTP = Informations cachées dans une demande web",
+                    "Imiter = Copier le comportement de quelqu'un d'autre",
+                    "Zero-rating = Télécharger gratuitement sans payer"
+                ]
+            },
+            {
+                title: "SSLH - Le multiplexeur (répartiteur)",
+                technical: "SSLH (SSL/SSH Multiplexer) écoute sur le port 443 et redirige le trafic vers le bon service interne. Si c'est du HTTPS, ça va vers le serveur web. Si c'est du SSH, ça va vers le serveur SSH. Tout passe par la même porte publique (443) !",
+                simple: "Imagine un réceptionniste à l'entrée d'un immeuble. Quand quelqu'un arrive, le réceptionniste regarde qui c'est et l'envoie au bon bureau : si c'est un visiteur du web, il va au bureau A. Si c'est un visiteur du VPN, il va au bureau B. Mais tout le monde entre par la même porte (le port 443) !",
+                vocabulary: [
+                    "SSLH = Répartiteur de trafic (comme un réceptionniste)",
+                    "Rediriger = Envoyer vers le bon endroit",
+                    "Multiplexeur = Gestionnaire de plusieurs flux",
+                    "Service = Application ou fonction sur le serveur"
+                ]
+            },
+            {
+                title: "Notre architecture complète",
+                technical: "Notre architecture utilise : sslh sur port 443 → SSH sur port 2222 → utilisateur gosen. Le proxy Python (proxy_optimized.py) gère les connexions avec des buffers de 64KB et TCP_NODELAY pour optimiser les performances.",
+                simple: "Voici comment ça marche en simple : Tu te connectes par la porte 443. Le réceptionniste (sslh) voit que c'est toi et t'envoie à la bonne chambre (SSH). Une fois dans la chambre, tu peux faire ce que tu veux sur internet, et personne ne peut voir ce que tu fais !",
+                vocabulary: [
+                    "Architecture = L'organisation de tous les éléments",
+                    "Buffer = Espace de stockage temporaire (comme une poche)",
+                    "TCP_NODELAY = Raccourci pour aller plus vite",
+                    "Optimiser = Rendre plus performant"
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+
+        function renderSteps() {
+            const container = document.getElementById('steps-container');
+            container.innerHTML = '';
+
+            steps.forEach((step, index) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = `step ${index === currentStep ? 'active' : ''} ${index < currentStep ? 'completed' : ''}`;
+
+                stepDiv.innerHTML = `
+                    <h2><span class="step-number">${index + 1}</span>${step.title}</h2>
+                    ${index === currentStep ? `
+                        <div class="step-content">
+                            <div class="technical">
+                                <strong>🔧 Version Technique :</strong><br>
+                                ${step.technical}
+                            </div>
+                            <div class="simple">
+                                <strong>🌍 Version Terre à Terre :</strong><br>
+                                ${step.simple}
+                            </div>
+                            <div class="vocabulary">
+                                <h3>📚 Vocabulaire à retenir</h3>
+                                <ul>
+                                    ${step.vocabulary.map(word => `
+                                        <li><span class="term">${word.split('=')[0]}</span> = ${word.split('=')[1]}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    ` : `
+                        <p style="color: #999; font-style: italic;">${step.title}</p>
+                    `}
+                `;
+
+                container.appendChild(stepDiv);
+            });
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((currentStep + 1) / steps.length) * 100;
+            document.getElementById('progress').textContent = `${Math.round(progress)}%`;
+            document.getElementById('progress').style.width = `${progress}%`;
+            document.getElementById('currentStep').textContent = currentStep + 1;
+            document.getElementById('totalSteps').textContent = steps.length;
+
+            document.getElementById('prevBtn').disabled = currentStep === 0;
+            document.getElementById('nextBtn').textContent = currentStep === steps.length - 1 ? 'Terminé !' : 'Suivant →';
+        }
+
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                renderSteps();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                renderSteps();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Initialisation
+        renderSteps();
+    </script>
+</body>
+</html>
