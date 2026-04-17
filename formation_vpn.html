@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -72,29 +72,178 @@
             font-weight: bold;
         }
 
-        .step {
+        /* SCHEMA AMÉLIORÉ */
+        .schema-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow-x: auto;
+        }
+
+        .schema-title {
+            color: #667eea;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .schema-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            min-width: 800px;
+        }
+
+        .schema-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .schema-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px 50px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            text-align: center;
+            min-width: 250px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .schema-box:hover {
+            transform: scale(1.05);
+        }
+
+        .schema-box-large {
+            background: linear-gradient(135deg, #ff6f00, #ff8f00);
+            min-width: 350px;
+            padding: 30px 60px;
+        }
+
+        .schema-arrow {
+            font-size: 3em;
+            color: #667eea;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .schema-arrows-bidirectional {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .schema-arrows-bidirectional span {
+            font-size: 2em;
+            color: #667eea;
+        }
+
+        .libertis-badge {
+            background: linear-gradient(135deg, #ff9800, #ff6f00);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .vps-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .vps-detail {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #667eea;
+        }
+
+        .vps-detail strong {
+            display: block;
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .data-flow {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .data-flow h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .data-flow-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .data-flow-arrow {
+            font-size: 2em;
+            color: #2e7d32;
+        }
+
+        /* STEPS */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .step-card {
             background: white;
             border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            cursor: pointer;
             transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .step.active {
-            border-left: 5px solid #667eea;
-            transform: translateX(10px);
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .step.completed {
-            border-left: 5px solid #4caf50;
-            opacity: 0.8;
+        .step-card.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
         }
 
-        .step h2 {
-            color: #333;
-            font-size: 1.8em;
-            margin-bottom: 15px;
+        .step-card.completed {
+            border-color: #4caf50;
+            background: #e8f5e9;
         }
 
         .step-number {
@@ -106,8 +255,46 @@
             border-radius: 50%;
             text-align: center;
             line-height: 40px;
-            margin-right: 15px;
             font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .step-card.completed .step-number {
+            background: #4caf50;
+        }
+
+        .step-card h3 {
+            color: #333;
+            font-size: 1.1em;
+            display: inline;
+            vertical-align: middle;
+        }
+
+        .step-details {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .step-details.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-details h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
         }
 
         .step-content {
@@ -119,31 +306,42 @@
 
         .technical {
             background: #e3f2fd;
-            padding: 15px;
+            padding: 20px;
             border-left: 4px solid #2196f3;
-            margin: 10px 0;
-            border-radius: 5px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .technical strong {
+            color: #2196f3;
+            font-size: 1.2em;
         }
 
         .simple {
             background: #e8f5e9;
-            padding: 15px;
+            padding: 20px;
             border-left: 4px solid #4caf50;
-            margin: 10px 0;
-            border-radius: 5px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .simple strong {
+            color: #4caf50;
+            font-size: 1.2em;
         }
 
         .action {
             background: #fff3e0;
-            padding: 20px;
+            padding: 25px;
             border-left: 4px solid #ff9800;
-            margin: 15px 0;
-            border-radius: 5px;
+            margin: 20px 0;
+            border-radius: 8px;
         }
 
         .action h3 {
             color: #ff6f00;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
         .action ul {
@@ -152,31 +350,33 @@
         }
 
         .action li {
-            margin: 8px 0;
+            margin: 12px 0;
             line-height: 1.6;
+            font-size: 1.05em;
         }
 
         .code-block {
             background: #263238;
             color: #aed581;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
-            margin: 10px 0;
+            margin: 15px 0;
             overflow-x: auto;
             font-family: 'Courier New', monospace;
             font-size: 0.95em;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .copy-btn {
             background: #667eea;
             color: white;
             border: none;
-            padding: 5px 15px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
-            font-size: 0.9em;
+            margin-top: 15px;
+            font-size: 1em;
+            transition: background 0.3s ease;
         }
 
         .copy-btn:hover {
@@ -186,22 +386,26 @@
         .term {
             color: #667eea;
             font-weight: bold;
+            background: #e3f2fd;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .buttons {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 30px;
             justify-content: center;
         }
 
         .btn {
-            padding: 15px 30px;
+            padding: 20px 40px;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            font-size: 1.2em;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: bold;
         }
 
         .btn-prev {
@@ -220,6 +424,7 @@
 
         .btn-next:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
         .btn:disabled {
@@ -229,14 +434,15 @@
 
         .vocabulary {
             background: #fff3e0;
-            padding: 15px;
+            padding: 25px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .vocabulary h3 {
             color: #ff6f00;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
         .vocabulary ul {
@@ -245,99 +451,43 @@
         }
 
         .vocabulary li {
-            padding: 8px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #ffe0b2;
+            font-size: 1.05em;
         }
 
         .vocabulary li:last-child {
             border-bottom: none;
         }
 
-        .schema-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .schema-title {
-            color: #667eea;
-            font-size: 1.8em;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .schema {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .schema-box {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            text-align: center;
-            min-width: 250px;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .schema-arrow {
-            font-size: 2em;
-            color: #667eea;
-        }
-
-        .schema-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .schema-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #667eea;
-        }
-
-        .schema-item strong {
-            display: block;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-
         .checklist {
             background: #e8f5e9;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         .checklist h3 {
             color: #2e7d32;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.3em;
         }
 
         .checklist-item {
             display: flex;
             align-items: center;
-            margin: 10px 0;
-            padding: 10px;
+            margin: 15px 0;
+            padding: 15px;
             background: white;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 1.05em;
         }
 
         .checklist-item:hover {
             background: #c8e6c9;
+            transform: translateX(5px);
         }
 
         .checklist-item.checked {
@@ -347,14 +497,15 @@
         }
 
         .checklist-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             border: 2px solid #2e7d32;
-            border-radius: 4px;
-            margin-right: 10px;
+            border-radius: 6px;
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .checklist-item.checked .checklist-checkbox {
@@ -365,48 +516,25 @@
         .checklist-checkbox::after {
             content: '✓';
             display: none;
+            font-size: 1.2em;
         }
 
         .checklist-item.checked .checklist-checkbox::after {
             display: block;
         }
 
-        .step-menu {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-
-        .step-btn {
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-        }
-
-        .step-btn:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        .step-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        .step-btn.completed {
-            background: #4caf50;
-            border-color: #4caf50;
-            color: white;
-        }
-
         @media (max-width: 768px) {
-            .schema-grid {
+            .schema-flow {
+                min-width: 100%;
+            }
+            .vps-details {
+                grid-template-columns: 1fr;
+            }
+            .data-flow-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .steps-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -425,45 +553,138 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progress">0%</div>
             </div>
-            <p style="margin-top: 10px; color: #666;">
+            <p style="margin-top: 10px; color: #666; font-size: 1.1em;">
                 Étape <span id="currentStep">1</span> sur <span id="totalSteps">10</span>
             </p>
         </div>
 
-        <div class="schema-container" id="schema-section">
-            <h2 class="schema-title">🗺️ Schéma Global du Projet VPN</h2>
-            <div class="schema">
-                <div class="schema-box">📱 Ton Smartphone</div>
-                <div class="schema-arrow">⬇️</div>
-                <div class="schema-grid">
-                    <div class="schema-item">
-                        <strong>🌐 Internet Libre</strong>
-                        Sites web, vidéos, téléchargements
-                    </div>
-                    <div class="schema-item">
-                        <strong>🔒 VPN Libertis</strong>
-                        Connexion sécurisée via le VPS
-                    </div>
-                </div>
-                <div class="schema-arrow">⬇️</div>
-                <div class="schema-box">🖥️ VPS Hostinger</div>
-                <div class="schema-arrow">⬇️</div>
-                <div class="schema-grid">
-                    <div class="schema-item">
-                        <strong>🚪 Port 443</strong>
-                        Entrée publique (SSLH)
-                    </div>
-                    <div class="schema-item">
-                        <strong>🔑 Port 2222</strong>
-                        SSH interne (VPS)
+        <!-- SCHÉMA AMÉLIORÉ -->
+        <div class="schema-container">
+            <h2 class="schema-title">🗺️ Schéma Global du VPN Libertis</h2>
+
+            <div class="libertis-badge">📱 Smartphone avec SIM Libertis</div>
+
+            <div class="schema-flow">
+                <!-- FLUX ALLER -->
+                <div class="schema-row">
+                    <div class="schema-box">📱 Ton Smartphone</div>
+                    <div class="schema-arrow">➡️</div>
+                    <div class="schema-box schema-box-large">
+                        🌐 Internet (via SIM Libertis)
+                        <br><small>Zero-rating activé</small>
                     </div>
                 </div>
+
                 <div class="schema-arrow">⬇️</div>
-                <div class="schema-box">🌐 Le Monde</div>
+
+                <div class="schema-row">
+                    <div class="schema-box">
+                        🚪 Port 443<br>
+                        <small>Entrée publique (SSLH)</small>
+                    </div>
+                    <div class="schema-arrow">➡️</div>
+                    <div class="schema-box">
+                        🔑 Port 2222<br>
+                        <small>SSH interne</small>
+                    </div>
+                </div>
+
+                <div class="schema-arrow">⬇️</div>
+
+                <div class="schema-box schema-box-large" style="background: linear-gradient(135deg, #7b1fa2, #9c27b0);">
+                    🖥️ VPS Hostinger<br>
+                    <small>72.62.181.239</small>
+                </div>
+
+                <div class="vps-details">
+                    <div class="vps-detail">
+                        <strong>👤 Utilisateur</strong>
+                        gosen
+                    </div>
+                    <div class="vps-detail">
+                        <strong>🐍 Proxy Python</strong>
+                        Port 8888
+                    </div>
+                </div>
+
+                <div class="schema-arrow">⬇️</div>
+
+                <div class="schema-box">🌍 Le Monde entier</div>
+
+                <div class="schema-arrow">⬇️</div>
+
+                <div class="schema-arrow" style="font-size: 1.5em;">🔄 LE RETOUR</div>
+
+                <div class="schema-arrow">⬆️</div>
+
+                <div class="schema-box">🌍 Le Monde envoie</div>
+
+                <div class="schema-arrow">⬆️</div>
+
+                <div class="schema-box schema-box-large" style="background: linear-gradient(135deg, #7b1fa2, #9c27b0);">
+                    🖥️ VPS Traite<br>
+                    <small>Et renvoie à toi</small>
+                </div>
+
+                <div class="schema-arrow">⬆️</div>
+
+                <div class="schema-row">
+                    <div class="schema-box">
+                        🔑 Port 2222<br>
+                        <small>Renvoie vers SSH</small>
+                    </div>
+                    <div class="schema-arrow">➡️</div>
+                    <div class="schema-box">
+                        🚪 Port 443<br>
+                        <small>Sortie vers Libertis</small>
+                    </div>
+                </div>
+
+                <div class="schema-arrow">⬆️</div>
+
+                <div class="schema-box schema-box-large">
+                    📡 Libertis te renvoie<br>
+                    <small>Données gratuites !</small>
+                </div>
+
+                <div class="schema-arrow">⬆️</div>
+
+                <div class="schema-box">📱 Ton Smartphone reçoit</div>
+            </div>
+
+            <div class="data-flow">
+                <h3>🔄 Comprendre le flux bidirectionnel des données</h3>
+
+                <div class="data-flow-row">
+                    <div style="font-weight: bold;">📱 TU DEMANDES</div>
+                    <div class="data-flow-arrow">➡️</div>
+                    <div>VPS reçoit → Traite → Renvoie</div>
+                    <div class="data-flow-arrow">➡️</div>
+                    <div style="font-weight: bold;">🌍 MONDE RÉPOND</div>
+                </div>
+
+                <div class="data-flow-row">
+                    <div style="font-weight: bold;">🌍 MONDE ENVOIE</div>
+                    <div class="data-flow-arrow">⬅️</div>
+                    <div>VPS reçoit → Traite → Renvoie</div>
+                    <div class="data-flow-arrow">⬅️</div>
+                    <div style="font-weight: bold;">📱 TU REÇOIS</div>
+                </div>
+
+                <p style="margin-top: 20px; color: #666; font-style: italic;">
+                    💡 C'est comme une conversation : tu poses une question (aller), l'autre répond (retour).<br>
+                    Le VPS fait l'intermédiaire pour que tout soit sécurisé et gratuit !
+                </p>
             </div>
         </div>
 
-        <div class="step-menu" id="step-menu"></div>
+        <!-- MENU DES ÉTAPES CLIQUABLE -->
+        <h2 style="color: white; text-align: center; margin: 30px 0 20px;">
+            📚 Clique sur une étape pour la voir en détail
+        </h2>
+        <div class="steps-grid" id="steps-grid"></div>
+
+        <!-- DÉTAILS DE L'ÉTAPE ACTIVE -->
         <div id="steps-container"></div>
 
         <div class="buttons">
@@ -476,59 +697,61 @@
         const steps = [
             {
                 title: "Comprendre le VPN - Pourquoi et Comment ?",
-                technical: "Un VPN (Virtual Private Network) crée un tunnel chiffré entre votre appareil et un serveur distant. Il utilise SSH pour sécuriser le trafic et le port 443 pour passer à travers les restrictions d'opérateurs.",
-                simple: "Imagine que tu envoies une lettre dans une enveloppe transparente - tout le monde peut voir ce que tu écris. Un VPN, c'est comme mettre ta lettre dans une enveloppe opaque et blindée que seul ton destinataire peut ouvrir. Personne entre toi et lui ne peut voir le contenu !",
+                technical: "Un VPN (Virtual Private Network) crée un tunnel chiffré entre votre appareil et un serveur distant. Il utilise SSH pour sécuriser le trafic et le port 443 pour passer à travers les restrictions d'opérateurs. Le flux est bidirectionnel : ton téléphone envoie des requêtes au VPS, le VPS les traite et envoie au monde, puis le monde répond au VPS qui renvoie à ton téléphone.",
+                simple: "Imagine que tu envoies une lettre dans une enveloppe transparente - tout le monde peut voir ce que tu écris. Un VPN, c'est comme mettre ta lettre dans une enveloppe opaque et blindée que seul ton destinataire peut ouvrir. Personne entre toi et lui ne peut voir le contenu ! Le VPS est ton facteur de confiance : il reçoit tes lettres, les envoie, et ramène les réponses !",
                 vocabulary: [
                     "VPN = Tunnel sécurisé (comme un passage secret)",
                     "Chiffrer = Transformer en code secret (cadenas)",
-                    "Tunnel = Passage protégé entre deux points",
-                    "SSH = Communication sécurisée (ligne cryptée)"
+                    "Bidirectionnel = Aller et retour (comme une conversation)",
+                    "Flux de données = Mouvement des informations"
                 ],
-                checklist: ["Comprendre ce qu'est un VPN", "Comprendre pourquoi utiliser un VPN", "Comprendre le principe du tunnel"],
+                checklist: ["Comprendre ce qu'est un VPN", "Comprendre le flux bidirectionnel", "Comprendre le rôle du VPS"],
                 actions: [
                     "Lire attentivement l'explication technique et l'analogie",
-                    "Mémoriser le vocabulaire avec les synonymes",
-                    "Passer à l'étape suivante quand vous comprenez le concept"
+                    "Regarder le schéma global pour visualiser le flux",
+                    "Mémoriser le vocabulaire avec les synonymes"
                 ]
             },
             {
-                title: "L'Architecture Globale - Comment ça marche ensemble",
-                technical: "Notre architecture : Smartphone → Internet → VPS (72.62.181.239) → Port 443 (SSLH) → Port 2222 (SSH) → Utilisateur gosen → Proxy Python → Internet. Chaque composant joue un rôle précis dans la chaîne.",
-                simple: "Pense à une usine de production : Tu entres par l'entrée principale (port 443), le réceptionniste (SSLH) t'envoie au bon atelier (SSH), l'ouvrier (gosen) t'aide, et le chef d'équipe (proxy Python) coordonne tout pour que la production soit rapide !",
+                title: "Architecture Globale - Comment ça marche ensemble",
+                technical: "Notre architecture bidirectionnelle : Smartphone (SIM Libertis) → Internet Libre → VPS (72.62.181.239) → Port 443 (SSLH) → Port 2222 (SSH) → Utilisateur gosen → Proxy Python (8888) → Internet → Monde. ET le retour : Monde → VPS → Smartphone. Chaque composant joue un rôle précis dans la chaîne aller-retour.",
+                simple: "Pense à une usine de production avec un service de livraison : Tu commandes quelque chose (ton téléphone), l'usine reçoit (VPS), elle prépare (proxy Python), elle livre (Internet), et quand le client est satisfait, il fait un retour (le monde renvoie au VPS qui te livre à toi) ! C'est un cycle complet aller-retour !",
                 vocabulary: [
                     "Architecture = Organisation des éléments (comme une usine)",
-                    "VPS = Serveur virtuel (ordinateur dans le cloud)",
-                    "Port = Porte d'entrée numérique",
-                    "Proxy = Intermédiaire (comme un traducteur)"
+                    "Bidirectionnel = Aller et retour (comme une livraison avec retour)",
+                    "VPS = Serveur virtuel (usine dans le cloud)",
+                    "Port = Porte d'entrée numérique"
                 ],
-                checklist: ["Identifier les composants de l'architecture", "Comprendre le flux des données", "Mémoriser les ports utilisés"],
+                checklist: ["Identifier les composants de l'architecture", "Comprendre le flux aller", "Comprendre le flux retour"],
                 actions: [
-                    "Regarder le schéma global en haut de la page",
-                    "Identifier où se trouve ton smartphone, le VPS et Internet",
-                    "Comprendre le rôle de chaque composant"
+                    "Regarder le schéma global avec le flux bidirectionnel",
+                    "Identifier ton smartphone, le VPS et le monde",
+                    "Comprendre le rôle de chaque composant",
+                    "Voir comment les données voyagent dans les deux sens"
                 ]
             },
             {
-                title: "Étape 1 : Installer le VPS - Notre Maison",
-                technical: "Procurez-vous un VPS chez Hostinger ou un autre fournisseur. Ubuntu 22.04 est recommandé. Notez l'IP (ex: 72.62.181.239), le mot de passe root et configurez le SSH sur le port 2222 pour plus de sécurité.",
-                simple: "C'est comme acheter une maison. Tu choisis l'emplacement (l'hébergeur), la taille (RAM, stockage), et tu reçois les clés (mot de passe). Une fois que c'est à toi, tu peux y faire ce que tu veux, quand tu veux !",
+                title: "Étape 1 - Installer le VPS - Notre Maison",
+                technical: "Procurez-vous un VPS chez Hostinger ou un autre fournisseur. Ubuntu 22.04 est recommandé. Notez l'IP (ex: 72.62.181.239), le mot de passe root et configurez le SSH sur le port 2222 pour plus de sécurité. Le VPS sera le centre de votre VPN.",
+                simple: "C'est comme acheter une maison. Tu choisis l'emplacement (l'hébergeur), la taille (RAM, stockage), et tu reçois les clés (mot de passe). Une fois que c'est à toi, tu peux y faire ce que tu veux, quand tu veux ! Cette maison sera ton centre de commandement pour le VPN !",
                 vocabulary: [
                     "VPS = Serveur virtuel (maison dans le cloud)",
                     "Hébergeur = Propriétaire qui loue le serveur",
                     "IP = Adresse de la maison",
                     "RAM = Mémoire vive (comme la mémoire à court terme)"
                 ],
-                checklist: ["Avoir un compte Hostinger", "Commander un VPS", "Recevoir les informations de connexion"],
+                checklist: ["Avoir un compte Hostinger", "Commander un VPS", "Recevoir les informations de connexion", "Noter IP, mot de passe et port"],
                 actions: [
                     "Aller sur hostinger.com",
                     "Choisir un plan VPS (minimum 2GB RAM)",
                     "Installer Ubuntu 22.04",
-                    "Noter l'IP, le mot de passe root et le port SSH"
+                    "Noter l'IP, le mot de passe root et le port SSH",
+                    "Vérifier que tu peux te connecter"
                 ]
             },
             {
-                title: "Étape 2 : Installer SSH - La Communication Sécurisée",
-                technical: "Connectez-vous au VPS et installez/configurez SSH. Modifiez le port par défaut de 22 à 2222 pour plus de sécurité. Créez un utilisateur 'gosen' avec mot de passe.",
+                title: "Étape 2 - Installer SSH - La Communication Sécurisée",
+                technical: "Connectez-vous au VPS et installez/configurez SSH. Modifiez le port par défaut de 22 à 2222 pour plus de sécurité. Créez un utilisateur 'gosen' avec mot de passe. SSH permettra la communication sécurisée entre ton téléphone et le VPS.",
                 code: `# Se connecter au VPS
 ssh root@VOTRE_IP
 
@@ -545,27 +768,31 @@ adduser gosen
 
 # Redémarrer SSH
 systemctl restart sshd`,
-                simple: "C'est comme installer une ligne téléphonique sécurisée chez toi. Tu choisis le numéro (port 2222), tu crées une ligne pour ton ami (utilisateur gosen), et tu mets un cadenas pour que personne ne puisse écouter !",
+                simple: "C'est comme installer une ligne téléphonique sécurisée chez toi. Tu choisis le numéro (port 2222), tu crées une ligne pour ton ami (utilisateur gosen), et tu mets un cadenas pour que personne ne puisse écouter ! Cette ligne servira à communiquer avec ton téléphone en toute sécurité !",
                 vocabulary: [
                     "SSH = Communication sécurisée (ligne cryptée)",
                     "Port = Numéro de téléphone (porte d'entrée)",
                     "Utilisateur = Personne autorisée à utiliser la ligne",
                     "Redémarrer = Éteindre et rallumer le service"
                 ],
-                checklist: ["SSH installé", "Port modifié à 2222", "Utilisateur gosen créé"],
+                checklist: ["SSH installé", "Port modifié à 2222", "Utilisateur gosen créé", "SSH fonctionnel"],
                 actions: [
                     "Copier les commandes ci-dessus",
                     "Exécuter sur votre VPS",
-                    "Vérifier que SSH fonctionne sur le port 2222"
+                    "Vérifier que SSH fonctionne sur le port 2222",
+                    "Tester la connexion avec l'utilisateur gosen"
                 ],
                 verify: `# Vérifier que SSH écoute sur le port 2222
 netstat -tlnp | grep :2222
 
-# Résultat attendu : tcp  0  0.0.0.0:2222  0.0.0.0:*  LISTEN  sshd`
+# Résultat attendu : tcp  0  0.0.0.0:2222  0.0.0.0:*  LISTEN  sshd
+
+# Tester la connexion avec gosen
+ssh -p 2222 gosen@localhost`
             },
             {
-                title: "Étape 3 : Installer SSLH - Le Répartiteur",
-                technical: "SSLH (SSL/SSH Multiplexer) écoute sur le port 443 et redirige le trafic vers le bon service. Configurez-le pour écouter sur le port 443 et rediriger vers SSH sur le port 2222.",
+                title: "Étape 3 - Installer SSLH - Le Répartiteur",
+                technical: "SSLH (SSL/SSH Multiplexer) écoute sur le port 443 et redirige le trafic vers le bon service. Configurez-le pour écouter sur le port 443 et rediriger vers SSH sur le port 2222. SSLH fera passer tout le trafic (SSL et SSH) par le port 443.",
                 code: `# Installer SSLH
 apt update && apt install sslh -y
 
@@ -599,18 +826,19 @@ EOF
 # Démarrer SSLH
 systemctl start sslh
 systemctl enable sslh`,
-                simple: "C'est comme installer un réceptionniste à l'entrée de ton immeuble. Quand quelqu'un sonne à la porte 443, le réceptionniste regarde qui c'est et l'envoie au bon appartement : si c'est du SSH, il va à l'appartement 2222 !",
+                simple: "C'est comme installer un réceptionniste à l'entrée de ton immeuble. Quand quelqu'un sonne à la porte 443, le réceptionniste regarde qui c'est et l'envoie au bon appartement : si c'est du SSH, il va à l'appartement 2222 ! Tout le monde entre par la même porte 443 mais va au bon endroit !",
                 vocabulary: [
-                    "SSLH = Répartiteur de trafic (réceptionniste)",
+                    "SSLH = Répartiteur de trafic (réceptionniste intelligent)",
                     "Rediriger = Envoyer vers le bon endroit",
                     "Multiplexeur = Gestionnaire de plusieurs flux",
                     "Écouter = Attendre les connexions (comme guetter la porte)"
                 ],
-                checklist: ["SSLH installé", "SSLH configuré", "SSLH démarré"],
+                checklist: ["SSLH installé", "SSLH configuré", "SSLH démarré", "SSLH actif"],
                 actions: [
                     "Copier les commandes ci-dessus",
                     "Exécuter sur votre VPS",
-                    "Vérifier que SSLH fonctionne"
+                    "Vérifier que SSLH fonctionne",
+                    "Tester que le port 443 est accessible"
                 ],
                 verify: `# Vérifier que SSLH écoute sur le port 443
 netstat -tlnp | grep :443
@@ -621,8 +849,8 @@ netstat -tlnp | grep :443
 netstat -tlnp | grep -E ':443|:2222'`
             },
             {
-                title: "Étape 4 : Activer IP Forwarding - Le Pont",
-                technical: "Activez l'IP forwarding pour permettre au VPS de faire passer le trafic entre les interfaces. Cela est nécessaire pour que le VPN fonctionne correctement.",
+                title: "Étape 4 - Activer IP Forwarding - Le Pont",
+                technical: "Activez l'IP forwarding pour permettre au VPS de faire passer le trafic entre les interfaces. Cela est nécessaire pour que le VPN fonctionne correctement. Sans IP forwarding, le VPS ne peut pas relayer les données entre ton téléphone et le monde.",
                 code: `# Activer IP forwarding temporairement
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
@@ -632,25 +860,30 @@ sysctl -p
 
 # Vérifier
 sysctl net.ipv4.ip_forward`,
-                simple: "C'est comme ouvrir un pont entre deux îles. Sans le pont, personne ne peut passer d'une île à l'autre. Avec le pont (IP forwarding), le trafic peut circuler librement entre ton téléphone et le reste du monde !",
+                simple: "C'est comme ouvrir un pont entre deux îles. Sans le pont, personne ne peut passer d'une île à l'autre. Avec le pont (IP forwarding), le trafic peut circuler librement entre ton téléphone et le reste du monde ! Le VPS devient un pont actif qui fait passer les données !",
                 vocabulary: [
                     "IP forwarding = Pont réseau (autoriser le passage)",
                     "Interface = Carte réseau (comme une porte)",
                     "Trafic = Données qui circulent",
                     "Sysctl = Configuration du système"
                 ],
-                checklist: ["IP forwarding activé", "Configuration permanente"],
+                checklist: ["IP forwarding activé", "Configuration permanente", "Vérification réussie"],
                 actions: [
                     "Copier les commandes ci-dessus",
                     "Exécuter sur votre VPS",
-                    "Vérifier que le forwarding est activé"
+                    "Vérifier que le forwarding est activé",
+                    "S'assurer que c'est permanent"
                 ],
                 verify: `# Résultat attendu
-net.ipv4.ip_forward = 1`
+net.ipv4.ip_forward = 1
+
+# Vérifier après redémarrage
+reboot
+# puis reconnecter et faire: sysctl net.ipv4.ip_forward`
             },
             {
-                title: "Étape 5 : Créer le Proxy Python - Le Chef d'Équipe",
-                technical: "Créez le fichier proxy_optimized.py qui gère les connexions VPN. Ce proxy utilise des buffers de 64KB, TCP_NODELAY pour réduire la latence, et gère les erreurs proprement.",
+                title: "Étape 5 - Créer le Proxy Python - Le Chef d'Équipe",
+                technical: "Créez le fichier proxy_optimized.py qui gère les connexions VPN. Ce proxy utilise des buffers de 64KB, TCP_NODELAY pour réduire la latence, et gère les erreurs proprement. Il servira d'intermédiaire entre le SSH et les connexions clients.",
                 code: `# Créer le fichier proxy
 cat > /root/proxy_optimized.py << 'EOF'
 import socket
@@ -744,29 +977,33 @@ EOF
 
 # Installer Python si nécessaire
 apt install python3 -y`,
-                simple: "C'est comme engager un chef d'équipe intelligent. Il reçoit les demandes, les organise, et les distribue rapidement. Il utilise une grande poche (buffer 64KB) pour transporter plus de choses à la fois !",
+                simple: "C'est comme engager un chef d'équipe intelligent. Il reçoit les demandes, les organise, et les distribue rapidement. Il utilise une grande poche (buffer 64KB) pour transporter plus de choses à la fois ! Quand tu lui donnes un paquet, il le transfère immédiatement à la destination sans attendre !",
                 vocabulary: [
                     "Proxy = Intermédiaire (chef d'équipe)",
                     "Buffer = Espace de stockage temporaire (grande poche)",
                     "TCP_NODELAY = Raccourci pour aller plus vite",
                     "Thread = Travailleur indépendant"
                 ],
-                checklist: ["Fichier proxy_optimized.py créé", "Python installé"],
+                checklist: ["Fichier proxy_optimized.py créé", "Python installé", "Proxy testé manuellement"],
                 actions: [
                     "Copier le code Python ci-dessus",
                     "Exécuter sur votre VPS",
-                    "Vérifier que le fichier est créé"
+                    "Vérifier que le fichier est créé",
+                    "Tester le proxy manuellement"
                 ],
                 verify: `# Vérifier que le fichier existe
 ls -la /root/proxy_optimized.py
 
 # Lancer le proxy en test
 python3 /root/proxy_optimized.py &
-# (Ctrl+C pour arrêter)`
+# (Ctrl+C pour arrêter)
+
+# Vérifier que le port 8888 est ouvert
+netstat -tlnp | grep :8888`
             },
             {
-                title: "Étape 6 : Démarrer le Proxy Automatiquement",
-                technical: "Créez un service systemd pour que le proxy démarre automatiquement au démarrage du VPS. Cela assure que le VPN est toujours disponible.",
+                title: "Étape 6 - Démarrer le Proxy Automatiquement",
+                technical: "Créez un service systemd pour que le proxy démarre automatiquement au démarrage du VPS. Cela assure que le VPN est toujours disponible, même après un redémarrage du VPS.",
                 code: `# Créer le service systemd
 cat > /etc/systemd/system/vpn-proxy.service << 'EOF'
 [Unit]
@@ -785,35 +1022,39 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
-# Activer et démarrer le service
-systemctl daemon-reload
+# Activer et démarrer le servicesystemctl daemon-reload
 systemctl enable vpn-proxy.service
 systemctl start vpn-proxy.service
 
 # Vérifier le statut
 systemctl status vpn-proxy.service`,
-                simple: "C'est comme mettre un réveil automatique. Chaque fois que le VPS s'allume (démarrage), le proxy se met en route automatiquement. Tu n'as plus besoin de le faire manuellement !",
+                simple: "C'est comme mettre un réveil automatique. Chaque fois que le VPS s'allume (démarrage), le proxy se met en route automatiquement. Tu n'as plus besoin de le faire manuellement ! Même après une coupure de courant, tout redémarre seul !",
                 vocabulary: [
                     "Systemd = Gestionnaire de services (contrôleur de l'usine)",
                     "Service = Programme qui tourne en arrière-plan",
                     "Démoniser = Mettre en arrière-plan",
                     "Démarrage automatique = Se lancer seul au redémarrage"
                 ],
-                checklist: ["Service systemd créé", "Service activé", "Service démarré"],
+                checklist: ["Service systemd créé", "Service activé", "Service démarré", "Service opérationnel"],
                 actions: [
                     "Copier les commandes ci-dessus",
                     "Exécuter sur votre VPS",
-                    "Vérifier que le service tourne"
+                    "Vérifier que le service tourne",
+                    "Tester un redémarrage du VPS"
                 ],
                 verify: `# Résultat attendu : Active (running)
 systemctl status vpn-proxy.service
 
 # Voir les logs du proxy
-journalctl -u vpn-proxy.service -f`
+journalctl -u vpn-proxy.service -f
+
+# Tester après redémarrage
+reboot
+# puis reconnecter et vérifier: systemctl status vpn-proxy.service`
             },
             {
-                title: "Étape 7 : Configurer le Client VPN - Ton Application",
-                technical: "Configurez votre application VPN (HTTP Injector, NPV Tunnel, ou autre) avec les paramètres suivants : Host: 72.62.181.239, Port: 443, Username: gosen, Password: gosen. Ajoutez le payload Libertis si nécessaire.",
+                title: "Étape 7 - Configurer le Client VPN - Ton Application",
+                technical: "Configurez votre application VPN (HTTP Injector, NPV Tunnel, ou autre) avec les paramètres suivants : Host: 72.62.181.239, Port: 443, Username: gosen, Password: gosen. Ajoutez le payload Libertis si nécessaire. Le client enverra les requêtes via le VPS.",
                 code: `# Configuration de base pour le client
 # Host: 72.62.181.239
 # Port: 443
@@ -823,28 +1064,30 @@ journalctl -u vpn-proxy.service -f`
 
 # Payload pour Libertis (si nécessaire)
 # GET http://41.159.3.107 HTTP/1.0[crlf]Host: 41.159.3.105[crlf]Connection: keep-alive[crlf]User-Agent: Dalvik/2.1.0[crlf]X-Online-Host: 41.159.3.107[crlf][crlf]`,
-                simple: "C'est comme configurer ta télécommande pour allumer la télé. Tu choisis le bon canal (IP), la bonne fréquence (port), et tu entres le code secret (mot de passe). Une fois configuré, ça marche toujours !",
+                simple: "C'est comme configurer ta télécommande pour allumer la télé. Tu choisis le bon canal (IP), la bonne fréquence (port), et tu entres le code secret (mot de passe). Une fois configuré, ça marche toujours ! Ton téléphone sait maintenant comment parler au VPS !",
                 vocabulary: [
                     "Client VPN = Application sur ton téléphone",
-                    "Payload = En-tête (fausse information)",
-                    "Host = Adresse du serveur",
-                    "Port = Porte d'entrée"
+                    "Payload = En-tête (fausse information pour se déguiser)",
+                    "Host = Adresse du serveur (ton VPS)",
+                    "Port = Porte d'entrée (443)"
                 ],
-                checklist: ["Application VPN installée", "Configuration entrée", "Connexion testée"],
+                checklist: ["Application VPN installée", "Configuration entrée", "Connexion testée", "Internet fonctionnel"],
                 actions: [
                     "Installer HTTP Injector ou NPV Tunnel",
                     "Entrer la configuration ci-dessus",
-                    "Tester la connexion"
+                    "Tester la connexion",
+                    "Vérifier que l'internet fonctionne"
                 ],
                 verify: `# Sur ton téléphone
 # 1. Ouvrir l'application VPN
 # 2. Cliquer sur "Connecter"
 # 3. Vérifier que la connexion est établie
-# 4. Ouvrir un navigateur et tester internet`
+# 4. Ouvrir un navigateur et tester internet
+# 5. Vérifier que les sites s'ouvrent gratuitement`
             },
             {
-                title: "Étape 8 : Vérifier et Maintenir - Contrôle Qualité",
-                technical: "Vérifiez que tous les services tournent correctement : SSLH sur 443, SSH sur 2222, et le Proxy Python sur 8888. Surveillez les logs pour détecter les erreurs.",
+                title: "Étape 8 - Vérifier et Maintenir - Contrôle Qualité",
+                technical: "Vérifiez que tous les services tournent correctement : SSLH sur 443, SSH sur 2222, et le Proxy Python sur 8888. Surveillez les logs pour détecter les erreurs. Faites des tests réguliers pour assurer le bon fonctionnement du VPN.",
                 code: `# Vérifier tous les ports actifs
 netstat -tlnp | grep -E ':443|:2222|:8888'
 
@@ -858,25 +1101,31 @@ journalctl -n 50 --no-pager
 
 # Redémarrer un service si nécessaire
 systemctl restart vpn-proxy.service`,
-                simple: "C'est comme faire une inspection de ton usine. Tu vérifies que toutes les machines tournent, que les portes sont ouvertes, et que personne ne bloque le passage. Si quelque chose ne marche pas, tu le répares !",
+                simple: "C'est comme faire une inspection de ton usine. Tu vérifies que toutes les machines tournent, que les portes sont ouvertes, et que personne ne bloque le passage. Si quelque chose ne marche pas, tu le répares ! Tu fais cette inspection régulièrement pour éviter les pannes !",
                 vocabulary: [
                     "Logs = Journaux (rapports d'activité)",
                     "Service = Programme qui tourne",
                     "Netstat = Outil pour voir les ports",
                     "Redémarrer = Éteindre et rallumer"
                 ],
-                checklist: ["Ports actifs vérifiés", "Services opérationnels", "Logs vérifiés"],
+                checklist: ["Ports actifs vérifiés", "Services opérationnels", "Logs vérifiés", "Tests réguliers"],
                 actions: [
                     "Exécuter les commandes de vérification",
                     "Regarder les logs pour détecter les erreurs",
-                    "Corriger les problèmes trouvés"
+                    "Corriger les problèmes trouvés",
+                    "Planifier des vérifications régulières"
                 ],
                 verify: `# Résultat attendu
 # Port 443 : sslh (écoute)
 # Port 2222 : sshd (écoute)
 # Port 8888 : python (écoute)
 
-# Tous les services doivent être "Active (running)"`
+# Tous les services doivent être "Active (running)"
+
+# Test depuis ton téléphone
+# - Se connecter au VPN
+# - Naviguer sur internet
+# - Vérifier que c'est gratuit`
             }
         ];
 
@@ -884,42 +1133,44 @@ systemctl restart vpn-proxy.service`,
         let completedSteps = new Set();
 
         function renderSteps() {
+            const grid = document.getElementById('steps-grid');
             const container = document.getElementById('steps-container');
-            const menu = document.getElementById('step-menu');
+            grid.innerHTML = '';
             container.innerHTML = '';
-            menu.innerHTML = '';
 
             steps.forEach((step, index) => {
-                // Menu buttons
-                const btn = document.createElement('button');
-                btn.className = `step-btn ${index === currentStep ? 'active' : ''} ${completedSteps.has(index) ? 'completed' : ''}`;
-                btn.textContent = `Étape ${index + 1}`;
-                btn.onclick = () => goToStep(index);
-                menu.appendChild(btn);
+                // Menu cards - CLIQUABLES
+                const card = document.createElement('div');
+                card.className = `step-card ${index === currentStep ? 'active' : ''} ${completedSteps.has(index) ? 'completed' : ''}`;
+                card.onclick = () => goToStep(index);
 
-                // Step content
+                card.innerHTML = `
+                    <span class="step-number">${index + 1}</span>
+                    <h3>${step.title}</h3>
+                `;
+                grid.appendChild(card);
+
+                // Step details
                 const stepDiv = document.createElement('div');
-                stepDiv.className = `step ${index === currentStep ? 'active' : ''} ${completedSteps.has(index) ? 'completed' : ''}`;
+                stepDiv.className = `step-details ${index === currentStep ? 'active' : ''}`;
 
                 let content = `
                     <h2><span class="step-number">${index + 1}</span>${step.title}</h2>
                 `;
 
-                if (index === currentStep) {
-                    content += `
-                        <div class="step-content">
-                            <div class="technical">
-                                <strong>🔧 Version Technique :</strong><br>
-                                ${step.technical}
-                            </div>
-                            <div class="simple">
-                                <strong>🌍 Version Terre à Terre :</strong><br>
-                                ${step.simple}
-                            </div>
-                    `;
+                content += `
+                        <div class="technical">
+                            <strong>🔧 Version Technique :</strong><br>
+                            ${step.technical}
+                        </div>
+                        <div class="simple">
+                            <strong>🌍 Version Terre à Terre :</strong><br>
+                            ${step.simple}
+                        </div>
+                `;
 
-                    if (step.actions) {
-                        content += `
+                if (step.actions) {
+                    content += `
                             <div class="action">
                                 <h3>📋 Ce que tu dois faire :</h3>
                                 <ul>
@@ -927,19 +1178,19 @@ systemctl restart vpn-proxy.service`,
                                 </ul>
                             </div>
                         `;
-                    }
+                }
 
-                    if (step.code) {
-                        content += `
+                if (step.code) {
+                    content += `
                             <div class="code-block">
                                 <pre>${step.code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
                                 <button class="copy-btn" onclick="copyCode(${index})">📋 Copier le code</button>
                             </div>
                         `;
-                    }
+                }
 
-                    if (step.verify) {
-                        content += `
+                if (step.verify) {
+                    content += `
                             <div class="action" style="border-left-color: #4caf50; background: #e8f5e9;">
                                 <h3>✅ Comment vérifier :</h3>
                                 <div class="code-block">
@@ -947,10 +1198,10 @@ systemctl restart vpn-proxy.service`,
                                 </div>
                             </div>
                         `;
-                    }
+                }
 
-                    if (step.checklist) {
-                        content += `
+                if (step.checklist) {
+                    content += `
                             <div class="checklist">
                                 <h3>✅ Checklist de validation</h3>
                                 ${step.checklist.map((item, i) => `
@@ -961,9 +1212,9 @@ systemctl restart vpn-proxy.service`,
                                 `).join('')}
                             </div>
                         `;
-                    }
+                }
 
-                    content += `
+                content += `
                             <div class="vocabulary">
                                 <h3>📚 Vocabulaire à retenir</h3>
                                 <ul>
@@ -972,9 +1223,7 @@ systemctl restart vpn-proxy.service`,
                                     `).join('')}
                                 </ul>
                             </div>
-                        </div>
-                    `;
-                }
+                `;
 
                 stepDiv.innerHTML = content;
                 container.appendChild(stepDiv);
@@ -991,12 +1240,7 @@ systemctl restart vpn-proxy.service`,
             document.getElementById('totalSteps').textContent = steps.length;
 
             document.getElementById('prevBtn').disabled = currentStep === 0;
-            document.getElementById('nextBtn').textContent = currentStep === steps.length - 1 ? 'Terminé !' : 'Suivant →';
-
-            // Scroll to active step
-            if (document.querySelector('.step.active')) {
-                document.querySelector('.step.active').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            document.getElementById('nextBtn').textContent = currentStep === steps.length - 1 ? '🎉 Terminé !' : 'Suivant →';
         }
 
         function nextStep() {
@@ -1022,7 +1266,7 @@ systemctl restart vpn-proxy.service`,
         function copyCode(stepIndex) {
             const code = steps[stepIndex].code;
             navigator.clipboard.writeText(code).then(() => {
-                alert('Code copié ! Collez-le dans votre terminal.');
+                alert('✅ Code copié ! Collez-le dans votre terminal.');
             }).catch(err => {
                 alert('Erreur lors de la copie : ' + err);
             });
